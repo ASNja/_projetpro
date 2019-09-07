@@ -27,11 +27,11 @@ con.connect(function(err) {
 
     // Liste tous les employes
     app.get('/employes', function(req, res) {
-        con.query('SELECT * from employe INNER JOIN conges ON conges.id_employe = employe.id', function(err, result) {
-            // con.query('SELECT `employe`.*, `conges`.* FROM `employe` LEFT JOIN `conges` ON `conges`.`id_employe` = `employe`.`id`', function(err, result) {
-            // con.query('SELECT * FROM employe, conges LEFT JOIN conges on employe.id = conges.id_employe', function(err, result) {
-            // con.query('SELECT * FROM employe, conges LEFT JOIN conges on conges.id_employe = employe.id', function(err, result) {
-            // con.query('SELECT * FROM employe', function(err, result) {
+        // con.query('SELECT * from employe INNER JOIN conges ON conges.id_employe = employe.id', function(err, result) {
+        // con.query('SELECT `employe`.*, `conges`.* FROM `employe` LEFT JOIN `conges` ON `conges`.`id_employe` = `employe`.`id`', function(err, result) {
+        // con.query('SELECT * FROM employe, conges LEFT JOIN conges on employe.id = conges.id_employe', function(err, result) {
+        // con.query('SELECT * FROM employe, conges LEFT JOIN conges on conges.id_employe = employe.id', function(err, result) {
+        con.query('SELECT * FROM employe', function(err, result) {
             if (err) return res.json(err);
             return res.json(result);
         });
@@ -105,17 +105,17 @@ con.connect(function(err) {
 
     // JOIN
 
-    // Liste tous les employes
-    app.get('/employe/:id/details', function(req, res) {
-        con.query('SELECT * from employe INNER JOIN conges ON conges.id_employe = employe.id', function(err, result) {
-            // con.query('SELECT `employe`.*, `conges`.* FROM `employe` LEFT JOIN `conges` ON `conges`.`id_employe` = `employe`.`id`', function(err, result) {
-            // con.query('SELECT * FROM employe, conges LEFT JOIN conges on employe.id = conges.id_employe', function(err, result) {
-            // con.query('SELECT * FROM employe, conges LEFT JOIN conges on conges.id_employe = employe.id', function(err, result) {
-            // con.query('SELECT * FROM employe', function(err, result) {
-            if (err) return res.json(err);
-            return res.json(result);
-        });
-    })
+    // // Liste tous les employes
+    // app.get('/employe/:id/details', function(req, res) {
+    //         // con.query('SELECT * from employe INNER JOIN conges ON conges.id_employe = employe.id', function(err, result) {
+    //         // con.query('SELECT `employe`.*, `conges`.* FROM `employe` LEFT JOIN `conges` ON `conges`.`id_employe` = `employe`.`id`', function(err, result) {
+    //         // con.query('SELECT * FROM employe, conges LEFT JOIN conges on employe.id = conges.id_employe', function(err, result) {
+    //         // con.query('SELECT * FROM employe, conges LEFT JOIN conges on conges.id_employe = employe.id', function(err, result) {
+    //         // con.query('SELECT * FROM employe', function(err, result) {
+    //         if (err) return res.json(err);
+    //         return res.json(result);
+    //     });
+    // })
 
     app.listen(3000, function() {
         console.log('Gestion de personnel app listening on port 3000!')
